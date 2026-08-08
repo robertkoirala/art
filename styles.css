@@ -286,8 +286,7 @@ a {
   cursor: zoom-in;
 }
 
-.gallery-button:focus-visible,
-.lightbox button:focus-visible {
+.gallery-button:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 5px;
 }
@@ -297,10 +296,11 @@ body.lightbox-open {
 }
 
 .lightbox {
+  --lightbox-ui-color: #aaa;
   width: 100vw;
   max-width: none;
   height: 100vh;
-  height: 100dvh;
+  height: 100svh;
   max-height: none;
   margin: 0;
   padding: 0;
@@ -315,6 +315,7 @@ body.lightbox-open {
 }
 
 .lightbox-inner {
+  position: relative;
   display: grid;
   place-items: center;
   width: 100%;
@@ -322,7 +323,7 @@ body.lightbox-open {
   padding: 58px 92px 72px;
 }
 
-.lightbox-figure {
+.lightbox-media {
   display: grid;
   place-items: center;
   width: 100%;
@@ -334,8 +335,9 @@ body.lightbox-open {
   width: auto;
   max-width: 100%;
   height: auto;
-  max-height: calc(100vh - 136px);
-  max-height: calc(100dvh - 136px);
+  max-height: calc(100vh - 150px);
+  max-height: calc(100svh - 150px);
+  object-fit: contain;
 }
 
 .lightbox-details {
@@ -347,8 +349,8 @@ body.lightbox-open {
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
   align-items: end;
   column-gap: 18px;
-  color: #aaa;
-  font-size: 0.78rem;
+  color: var(--lightbox-ui-color);
+  font-size: clamp(0.86rem, 1.2vw, 1rem);
 }
 
 .lightbox-details p {
@@ -372,34 +374,32 @@ body.lightbox-open {
   justify-self: end;
 }
 
-.lightbox button {
+.lightbox-control {
   position: fixed;
   z-index: 1;
   padding: 8px;
   border: 0;
   background: transparent;
-  color: inherit;
+  color: var(--lightbox-ui-color);
   font: inherit;
+  line-height: 1;
   cursor: pointer;
+}
+
+.lightbox-control:focus-visible {
+  outline: none;
 }
 
 .lightbox-close {
   top: 18px;
   right: 22px;
-  font-size: 2rem;
-  line-height: 1;
-}
-
-.lightbox .lightbox-close:focus-visible {
-  outline: none;
-  color: #aaa;
+  font-size: clamp(2.25rem, 3.5vw, 3rem);
 }
 
 .lightbox-previous,
 .lightbox-next {
   top: 50%;
-  font-size: clamp(4.5rem, 8vw, 6.5rem);
-  line-height: 1;
+  font-size: clamp(5rem, 9vw, 7rem);
   transform: translateY(-50%);
 }
 
@@ -471,14 +471,14 @@ body.lightbox-open {
 
   .lightbox-image {
     max-height: calc(100vh - 138px);
-    max-height: calc(100dvh - 138px);
+    max-height: calc(100svh - 138px);
   }
 
   .lightbox-previous,
   .lightbox-next {
     top: auto;
     bottom: 14px;
-    font-size: 4.5rem;
+    font-size: clamp(4.5rem, 16vw, 5.75rem);
     transform: none;
   }
 
@@ -495,6 +495,6 @@ body.lightbox-open {
     bottom: 84px;
     left: 14px;
     column-gap: 10px;
-    font-size: 0.7rem;
+    font-size: 0.82rem;
   }
 }
