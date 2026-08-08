@@ -30,12 +30,12 @@
   dialog.setAttribute("aria-label", "Fullscreen photograph viewer");
   dialog.innerHTML = `
     <div class="lightbox-inner">
-      <button class="lightbox-close" type="button" aria-label="Close">×</button>
-      <button class="lightbox-previous" type="button" aria-label="Previous photograph">‹</button>
-      <figure class="lightbox-figure">
+      <button class="lightbox-control lightbox-close" type="button" aria-label="Close">×</button>
+      <button class="lightbox-control lightbox-previous" type="button" aria-label="Previous photograph">‹</button>
+      <figure class="lightbox-media">
         <img class="lightbox-image" alt="">
       </figure>
-      <button class="lightbox-next" type="button" aria-label="Next photograph">›</button>
+      <button class="lightbox-control lightbox-next" type="button" aria-label="Next photograph">›</button>
       <div class="lightbox-details">
         <p class="lightbox-project"></p>
         <p class="lightbox-caption" hidden></p>
